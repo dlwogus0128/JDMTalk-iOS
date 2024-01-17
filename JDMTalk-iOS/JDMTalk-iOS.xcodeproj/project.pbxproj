@@ -9,22 +9,26 @@
 /* Begin PBXBuildFile section */
 		234A0E522B576A0E0063A79C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234A0E512B576A0E0063A79C /* AppDelegate.swift */; };
 		234A0E542B576A0E0063A79C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234A0E532B576A0E0063A79C /* SceneDelegate.swift */; };
-		234A0E562B576A0E0063A79C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234A0E552B576A0E0063A79C /* ViewController.swift */; };
 		234A0E5B2B576A0F0063A79C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 234A0E5A2B576A0F0063A79C /* Assets.xcassets */; };
 		234A0E5E2B576A0F0063A79C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 234A0E5C2B576A0F0063A79C /* LaunchScreen.storyboard */; };
 		234A0E6D2B576BE00063A79C /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 234A0E6C2B576BE00063A79C /* .gitkeep */; };
+		234A0E712B576E090063A79C /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234A0E702B576E090063A79C /* Config.swift */; };
+		234A0E742B576E600063A79C /* OpenAI in Frameworks */ = {isa = PBXBuildFile; productRef = 234A0E732B576E600063A79C /* OpenAI */; };
+		234A0E772B576E6D0063A79C /* MessageKit in Frameworks */ = {isa = PBXBuildFile; productRef = 234A0E762B576E6D0063A79C /* MessageKit */; };
+		234A0E792B576EC20063A79C /* JDMTalkVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234A0E782B576EC20063A79C /* JDMTalkVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		234A0E4E2B576A0E0063A79C /* JDMTalk-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "JDMTalk-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		234A0E512B576A0E0063A79C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		234A0E532B576A0E0063A79C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		234A0E552B576A0E0063A79C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		234A0E5A2B576A0F0063A79C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		234A0E5D2B576A0F0063A79C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		234A0E5F2B576A0F0063A79C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		234A0E6C2B576BE00063A79C /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
 		234A0E6E2B576BEF0063A79C /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		234A0E702B576E090063A79C /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		234A0E782B576EC20063A79C /* JDMTalkVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JDMTalkVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +36,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				234A0E742B576E600063A79C /* OpenAI in Frameworks */,
+				234A0E772B576E6D0063A79C /* MessageKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,7 +92,7 @@
 		234A0E672B576B560063A79C /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				234A0E552B576A0E0063A79C /* ViewController.swift */,
+				234A0E782B576EC20063A79C /* JDMTalkVC.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -94,6 +100,7 @@
 		234A0E682B576B690063A79C /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				234A0E702B576E090063A79C /* Config.swift */,
 				234A0E6C2B576BE00063A79C /* .gitkeep */,
 			);
 			path = Utils;
@@ -141,6 +148,10 @@
 			dependencies = (
 			);
 			name = "JDMTalk-iOS";
+			packageProductDependencies = (
+				234A0E732B576E600063A79C /* OpenAI */,
+				234A0E762B576E6D0063A79C /* MessageKit */,
+			);
 			productName = "JDMTalk-iOS";
 			productReference = 234A0E4E2B576A0E0063A79C /* JDMTalk-iOS.app */;
 			productType = "com.apple.product-type.application";
@@ -169,6 +180,10 @@
 				Base,
 			);
 			mainGroup = 234A0E452B576A0E0063A79C;
+			packageReferences = (
+				234A0E722B576E600063A79C /* XCRemoteSwiftPackageReference "OpenAI" */,
+				234A0E752B576E6D0063A79C /* XCRemoteSwiftPackageReference "MessageKit" */,
+			);
 			productRefGroup = 234A0E4F2B576A0E0063A79C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -196,8 +211,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				234A0E562B576A0E0063A79C /* ViewController.swift in Sources */,
+				234A0E712B576E090063A79C /* Config.swift in Sources */,
 				234A0E522B576A0E0063A79C /* AppDelegate.swift in Sources */,
+				234A0E792B576EC20063A79C /* JDMTalkVC.swift in Sources */,
 				234A0E542B576A0E0063A79C /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -411,6 +427,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		234A0E722B576E600063A79C /* XCRemoteSwiftPackageReference "OpenAI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MacPaw/OpenAI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.2.5;
+			};
+		};
+		234A0E752B576E6D0063A79C /* XCRemoteSwiftPackageReference "MessageKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MessageKit/MessageKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		234A0E732B576E600063A79C /* OpenAI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 234A0E722B576E600063A79C /* XCRemoteSwiftPackageReference "OpenAI" */;
+			productName = OpenAI;
+		};
+		234A0E762B576E6D0063A79C /* MessageKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 234A0E752B576E6D0063A79C /* XCRemoteSwiftPackageReference "MessageKit" */;
+			productName = MessageKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 234A0E462B576A0E0063A79C /* Project object */;
 }
