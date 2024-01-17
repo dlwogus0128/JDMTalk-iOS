@@ -16,6 +16,8 @@
 		234A0E742B576E600063A79C /* OpenAI in Frameworks */ = {isa = PBXBuildFile; productRef = 234A0E732B576E600063A79C /* OpenAI */; };
 		234A0E772B576E6D0063A79C /* MessageKit in Frameworks */ = {isa = PBXBuildFile; productRef = 234A0E762B576E6D0063A79C /* MessageKit */; };
 		234A0E792B576EC20063A79C /* JDMTalkVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234A0E782B576EC20063A79C /* JDMTalkVC.swift */; };
+		234A0E7B2B5770C80063A79C /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234A0E7A2B5770C80063A79C /* MessageModel.swift */; };
+		234A0E7E2B5771FD0063A79C /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234A0E7D2B5771FD0063A79C /* UIImage+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +31,8 @@
 		234A0E6E2B576BEF0063A79C /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
 		234A0E702B576E090063A79C /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		234A0E782B576EC20063A79C /* JDMTalkVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JDMTalkVC.swift; sourceTree = "<group>"; };
+		234A0E7A2B5770C80063A79C /* MessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
+		234A0E7D2B5771FD0063A79C /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +104,7 @@
 		234A0E682B576B690063A79C /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				234A0E7D2B5771FD0063A79C /* UIImage+.swift */,
 				234A0E702B576E090063A79C /* Config.swift */,
 				234A0E6C2B576BE00063A79C /* .gitkeep */,
 			);
@@ -118,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				234A0E6E2B576BEF0063A79C /* .gitkeep */,
+				234A0E7A2B5770C80063A79C /* MessageModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -211,8 +217,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				234A0E7B2B5770C80063A79C /* MessageModel.swift in Sources */,
 				234A0E712B576E090063A79C /* Config.swift in Sources */,
 				234A0E522B576A0E0063A79C /* AppDelegate.swift in Sources */,
+				234A0E7E2B5771FD0063A79C /* UIImage+.swift in Sources */,
 				234A0E792B576EC20063A79C /* JDMTalkVC.swift in Sources */,
 				234A0E542B576A0E0063A79C /* SceneDelegate.swift in Sources */,
 			);
