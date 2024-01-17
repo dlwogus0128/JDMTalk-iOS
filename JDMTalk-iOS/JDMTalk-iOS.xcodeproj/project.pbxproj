@@ -13,6 +13,8 @@
 		234A0E592B576A0E0063A79C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 234A0E572B576A0E0063A79C /* Main.storyboard */; };
 		234A0E5B2B576A0F0063A79C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 234A0E5A2B576A0F0063A79C /* Assets.xcassets */; };
 		234A0E5E2B576A0F0063A79C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 234A0E5C2B576A0F0063A79C /* LaunchScreen.storyboard */; };
+		234A0E6D2B576BE00063A79C /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 234A0E6C2B576BE00063A79C /* .gitkeep */; };
+		234A0E6F2B576BEF0063A79C /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 234A0E6E2B576BEF0063A79C /* .gitkeep */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		234A0E5A2B576A0F0063A79C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		234A0E5D2B576A0F0063A79C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		234A0E5F2B576A0F0063A79C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		234A0E6C2B576BE00063A79C /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		234A0E6E2B576BEF0063A79C /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +60,73 @@
 		234A0E502B576A0E0063A79C /* JDMTalk-iOS */ = {
 			isa = PBXGroup;
 			children = (
-				234A0E512B576A0E0063A79C /* AppDelegate.swift */,
-				234A0E532B576A0E0063A79C /* SceneDelegate.swift */,
-				234A0E552B576A0E0063A79C /* ViewController.swift */,
+				234A0E652B576B2E0063A79C /* Global */,
+				234A0E662B576B370063A79C /* Network */,
+				234A0E672B576B560063A79C /* Presentation */,
 				234A0E572B576A0E0063A79C /* Main.storyboard */,
-				234A0E5A2B576A0F0063A79C /* Assets.xcassets */,
-				234A0E5C2B576A0F0063A79C /* LaunchScreen.storyboard */,
 				234A0E5F2B576A0F0063A79C /* Info.plist */,
 			);
 			path = "JDMTalk-iOS";
+			sourceTree = "<group>";
+		};
+		234A0E652B576B2E0063A79C /* Global */ = {
+			isa = PBXGroup;
+			children = (
+				234A0E682B576B690063A79C /* Utils */,
+				234A0E692B576B750063A79C /* Resource */,
+				234A0E6B2B576BA30063A79C /* Supports */,
+			);
+			path = Global;
+			sourceTree = "<group>";
+		};
+		234A0E662B576B370063A79C /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				234A0E6A2B576B850063A79C /* Model */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		234A0E672B576B560063A79C /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				234A0E552B576A0E0063A79C /* ViewController.swift */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		234A0E682B576B690063A79C /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				234A0E6C2B576BE00063A79C /* .gitkeep */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		234A0E692B576B750063A79C /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				234A0E5A2B576A0F0063A79C /* Assets.xcassets */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		234A0E6A2B576B850063A79C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				234A0E6E2B576BEF0063A79C /* .gitkeep */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		234A0E6B2B576BA30063A79C /* Supports */ = {
+			isa = PBXGroup;
+			children = (
+				234A0E5C2B576A0F0063A79C /* LaunchScreen.storyboard */,
+				234A0E512B576A0E0063A79C /* AppDelegate.swift */,
+				234A0E532B576A0E0063A79C /* SceneDelegate.swift */,
+			);
+			path = Supports;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,7 +189,9 @@
 			files = (
 				234A0E5E2B576A0F0063A79C /* LaunchScreen.storyboard in Resources */,
 				234A0E5B2B576A0F0063A79C /* Assets.xcassets in Resources */,
+				234A0E6F2B576BEF0063A79C /* .gitkeep in Resources */,
 				234A0E592B576A0E0063A79C /* Main.storyboard in Resources */,
+				234A0E6D2B576BE00063A79C /* .gitkeep in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
