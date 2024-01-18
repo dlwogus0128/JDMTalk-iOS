@@ -37,9 +37,3 @@ extension MessageModel: Comparable {
         return lhs.sentDate < rhs.sentDate
     }
 }
-
-// Create a text message using the 'MessageKind.text'
-func createTextMessage(messageId: String, text: String, sender: SenderType, sentDate: Date) -> MessageModel {
-    let kind = MessageKind.text(text)
-    return MessageModel(messageId: messageId, kind: kind, sender: sender, sentDate: sentDate)
-}

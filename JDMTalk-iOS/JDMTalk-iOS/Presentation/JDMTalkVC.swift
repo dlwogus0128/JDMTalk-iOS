@@ -22,17 +22,18 @@ class CustomMessageCell: MessageContentCell {
 }
 
 final class JDMTalkVC: MessagesViewController {
-
+    
     // MARK: - Properties
     
     private var messages = [MessageModel]()
     
     private let jdmSender = Sender(senderId: "jdm", displayName: "정대만")
-    private let meSender = Sender(senderId: "me", displayName: "나")
+    private let userSender = Sender(senderId: "me", displayName: "나")
     
     private let layout = MessagesCollectionViewFlowLayout()
-        
+    
     private let openAI = OpenAI(apiToken: Config.openAIKey)
+    
     
     // MARK: - UI Components
     
@@ -57,7 +58,6 @@ final class JDMTalkVC: MessagesViewController {
 extension JDMTalkVC {
     private func setDelegate() {
         messageInputBar.delegate = self
-        
         messagesCollectionView.messagesDataSource = self
         messagesCollectionView.messagesLayoutDelegate = self
         messagesCollectionView.messagesDisplayDelegate = self
@@ -71,7 +71,6 @@ extension JDMTalkVC {
 
         messageInputBar.topStackView.layer.masksToBounds = true
         messageInputBar.setRightStackViewWidthConstant(to: 36, animated: false)
-
         
         messageInputBar.setStackViewItems([messageInputBar.sendButton, InputBarButtonItem.fixedSpace(2)],
                                           forStack: .right, animated: false)
@@ -95,12 +94,13 @@ extension JDMTalkVC {
         self.messagesCollectionView.register(CustomMessageCell.self)
     }
     
+    /// 첫 기본 메세지
     private func firstToDefaultMessage() {
         let text = "여어~ 재영!! 잘지냈냐?"
-        insertToMessage(text: text)
+        insertJDMMessage(text: text)
     }
     
-    private func insertToMessage(text: String) {
+    private func insertJDMMessage(text: String) {
         // 메시지를 만들고 추가
         let attributedText = NSAttributedString(
             string: text,
@@ -123,22 +123,20 @@ extension JDMTalkVC {
         let indexPath = IndexPath(item: 0, section: messages.count - 1)
         
         // Perform batch updates to insert the new section
-        DispatchQueue.main.async {
-            self.messagesCollectionView.performBatchUpdates({
-                self.messagesCollectionView.insertSections(IndexSet(integer: indexPath.section))
-            }) { (_) in
-                // Scroll to the last item with animation
-                self.messagesCollectionView.scrollToLastItem(animated: true)
-            }
+        self.messagesCollectionView.performBatchUpdates({
+            self.messagesCollectionView.insertSections(IndexSet(integer: indexPath.section))
+        }) { (_) in
+            // Scroll to the last item with animation
+            self.messagesCollectionView.scrollToLastItem(animated: true)
         }
     }
     
-    func isLastSectionVisible() -> Bool {
-        guard !messages.isEmpty else { return false }
-
-        let lastIndexPath = IndexPath(item: 0, section: messages.count - 1)
-
-        return messagesCollectionView.indexPathsForVisibleItems.contains(lastIndexPath)
+    func setTypingIndicator(isHidden: Bool) {
+        self.setTypingIndicatorViewHidden(isHidden, animated: true)
+    }
+    // 타이핑 인디케이터의 크기 조정
+    func typingIndicatorViewSize(for layout: MessagesCollectionViewFlowLayout) -> CGSize {
+        return CGSize(width: 45, height: 45)
     }
 }
 
@@ -172,7 +170,7 @@ extension JDMTalkVC {
 
 extension JDMTalkVC: MessagesDataSource {
     var currentSender: MessageKit.SenderType {
-        return meSender
+        return userSender
     }
     
     func numberOfSections(in messagesCollectionView: MessagesCollectionView) -> Int {
@@ -221,16 +219,7 @@ extension JDMTalkVC: MessagesDataSource {
 // MARK: - MessagesLayoutDelegate
 
 extension JDMTalkVC: MessagesLayoutDelegate {
-    // 아래 여백
-    func footerViewSize(for section: Int, in messagesCollectionView: MessagesCollectionView) -> CGSize {
-        return CGSize(width: 20, height: 0)
-    }
-    
-    // 말풍선 위 이름 나오는 곳의 height
-    func messageTopLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
-        return isFromCurrentSender(message: message) ? 0 : 20
-    }
-    
+    // 날짜 나오는 부분
     func cellTopLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
         if indexPath.section == 0 {
             return 15
@@ -239,14 +228,19 @@ extension JDMTalkVC: MessagesLayoutDelegate {
         }
     }
     
+    // 말풍선 위 이름 나오는 곳
+    func messageTopLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
+        return isFromCurrentSender(message: message) ? 0 : 20
+    }
+    
     // 메세지 전송 시간
     func cellBottomLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
         return 20
     }
     
-    // 타이핑 인디케이터의 크기 조정
-    func typingIndicatorViewSize(for layout: MessagesCollectionViewFlowLayout) -> CGSize {
-        return CGSize(width: 45, height: 45)
+    // 아래 여백
+    func footerViewSize(for section: Int, in messagesCollectionView: MessagesCollectionView) -> CGSize {
+        return CGSize(width: 20, height: 0)
     }
 }
 
@@ -259,13 +253,14 @@ extension JDMTalkVC: MessagesDisplayDelegate {
     }
     
     // 말풍선 오른쪽에
-    func isFromCurrentSender(message: MessageType) -> Bool {
-        // 여기에서 != 로 하면 왼쪽에서 나오고, == 로 하면 오른쪽에서 나온다
-        return message.sender.senderId == currentSender.senderId
+    func isFromUserSender(message: MessageType) -> Bool {
+        // 여기에서 != 로 하면 왼쪽에서 나오고, == 로 하면 오른쪽에서 나옴
+        return message.sender.senderId == userSender.senderId
     }
     
+    // 글자 색상
     func textColor(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UIColor {
-        return isFromCurrentSender(message: message) ? .white : .white
+        return .white
     }
     
     // 말풍선의 꼬리 모양 방향
@@ -274,6 +269,7 @@ extension JDMTalkVC: MessagesDisplayDelegate {
         return .bubbleTailOutline(UIColor(hex: "#8B0000"), tail, .pointedEdge)
     }
     
+    // 섹션마다의 inset
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         if section == 0 {
             // 첫 번째 섹션에 대한 inset 설정
@@ -284,6 +280,7 @@ extension JDMTalkVC: MessagesDisplayDelegate {
         }
     }
     
+    // 프로필 사진
     func configureAvatarView(_ avatarView: AvatarView, for message: MessageType, at _: IndexPath, in _: MessagesCollectionView) {
         let avatar = Avatar(image: UIImage(named: "img_jdm_profile"))
         avatarView.set(avatar: avatar)
@@ -314,23 +311,27 @@ extension JDMTalkVC: InputBarAccessoryViewDelegate {
 
 extension JDMTalkVC {
     private func sendChatMessage(message: String) {
+        setTypingIndicator(isHidden: false)
         let query = ChatQuery(model: .gpt3_5Turbo, messages: [
             Chat(role: .system, content: Config.systemScript),
             Chat(role: .user, content: message)
         ])
         
-        openAI.chats(query: query) { result in
-            // Process the result through the callback
-            switch result {
-            case .success(let response):
-                if let textResult = response.choices.first?.message.content {
-                    print("Chat completion result: \(textResult)")
-                    self.insertToMessage(text: textResult)
-                } else {
-                    print("No text result found.")
+        openAI.chats(query: query) { result in 
+            DispatchQueue.main.async {
+                self.setTypingIndicator(isHidden: true)
+                
+                switch result {
+                case .success(let response):
+                    if let textResult = response.choices.first?.message.content {
+                        print("Chat completion result: \(textResult)")
+                        self.insertJDMMessage(text: textResult)
+                    } else {
+                        print("No text result found.")
+                    }
+                case .failure(let error):
+                    print("Error during chat completion: \(error)")
                 }
-            case .failure(let error):
-                print("Error during chat completion: \(error)")
             }
         }
     }
