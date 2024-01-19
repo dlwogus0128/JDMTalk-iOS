@@ -58,7 +58,7 @@
 
 사용한 모델은 `gpt3_5Turbo` 입니닷
 
-(자세한 설명은 추후에 링크...)
+[개발 내용을 블로그에 정리](https://dlwogus0128.github.io/posts/iOS-Swift-%EC%9E%AC%EC%98%81%EC%9D%B4%EB%A7%8C%EC%9D%84-%EC%9C%84%ED%95%9C-%EC%8A%AC%EB%9E%A8%EB%8D%A9%ED%81%AC-%EC%A0%95%EB%8C%80%EB%A7%8C-%EC%B1%84%ED%8C%85-%EC%95%B1-%EB%A7%8C%EB%93%A4%EA%B8%B0-(Feat.-MessageKit,-OpenAI)/)해보았으니 놀러오세용!!
 
 &nbsp;
 
